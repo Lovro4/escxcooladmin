@@ -1,0 +1,611 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local main = Instance.new("Frame")
+local adminlabel = Instance.new("TextLabel")
+local exitButton = Instance.new("TextButton")
+local welcomelabel = Instance.new("TextLabel")
+local namelabel = Instance.new("TextLabel")
+local ScrollingFrame = Instance.new("ScrollingFrame")
+local commandsLabel = Instance.new("TextLabel")
+local flyLabel = Instance.new("TextLabel")
+local unflyLabel = Instance.new("TextLabel")
+local noclipLabel = Instance.new("TextLabel")
+local unnoclipLabel = Instance.new("TextLabel")
+local UIListLayout = Instance.new("UIListLayout")
+local walkspeedLabel = Instance.new("TextLabel")
+local unwalkspeedLabel = Instance.new("TextLabel")
+local jumppowerLabel = Instance.new("TextLabel")
+local unjumppowerLabel = Instance.new("TextLabel")
+local teleportToPlayerLabel = Instance.new("TextLabel")
+local clicktpLabel = Instance.new("TextLabel")
+local unclicktpLabel = Instance.new("TextLabel")
+local commandBox = Instance.new("TextBox")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.ResetOnSpawn = false
+
+main.Name = "main"
+main.Parent = ScreenGui
+main.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+main.BorderColor3 = Color3.fromRGB(0, 0, 0)
+main.BorderSizePixel = 0
+main.Position = UDim2.new(0.0180412363, 0, 0.0376884416, 0)
+main.Size = UDim2.new(0, 547, 0, 349)
+main.Active = true
+
+adminlabel.Name = "adminlabel"
+adminlabel.Parent = main
+adminlabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+adminlabel.BackgroundTransparency = 1.000
+adminlabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+adminlabel.BorderSizePixel = 0
+adminlabel.Position = UDim2.new(0.0420475304, 0, 0, 0)
+adminlabel.Size = UDim2.new(0, 200, 0, 50)
+adminlabel.Font = Enum.Font.FredokaOne
+adminlabel.Text = "EscX Admin"
+adminlabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+adminlabel.TextSize = 50.000
+
+exitButton.Name = "exitButton"
+exitButton.Parent = main
+exitButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+exitButton.BackgroundTransparency = 1.000
+exitButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+exitButton.BorderSizePixel = 0
+exitButton.Position = UDim2.new(0.904936016, 0, 0, 0)
+exitButton.Size = UDim2.new(0, 52, 0, 50)
+exitButton.Font = Enum.Font.FredokaOne
+exitButton.Text = "X"
+exitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+exitButton.TextSize = 50.000
+
+welcomelabel.Name = "welcomelabel"
+welcomelabel.Parent = main
+welcomelabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+welcomelabel.BackgroundTransparency = 1.000
+welcomelabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+welcomelabel.BorderSizePixel = 0
+welcomelabel.Position = UDim2.new(0.0420475304, 0, 0.180515766, 0)
+welcomelabel.Size = UDim2.new(0, 200, 0, 50)
+welcomelabel.Font = Enum.Font.FredokaOne
+welcomelabel.Text = "Welcome,"
+welcomelabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+welcomelabel.TextSize = 50.000
+
+namelabel.Name = "namelabel"
+namelabel.Parent = main
+namelabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+namelabel.BackgroundTransparency = 1.000
+namelabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+namelabel.BorderSizePixel = 0
+namelabel.Position = UDim2.new(0.407678246, 0, 0.180515766, 0)
+namelabel.Size = UDim2.new(0, 290, 0, 50)
+namelabel.Font = Enum.Font.Jura
+namelabel.Text = ""
+namelabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+namelabel.TextSize = 40.000
+
+ScrollingFrame.Parent = main
+ScrollingFrame.Active = true
+ScrollingFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+ScrollingFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ScrollingFrame.BorderSizePixel = 0
+ScrollingFrame.Position = UDim2.new(0.0164533816, 0, 0.323782235, 0)
+ScrollingFrame.Size = UDim2.new(0, 214, 0, 206)
+ScrollingFrame.Active = true
+
+commandsLabel.Name = "commandsLabel"
+commandsLabel.Parent = ScrollingFrame
+commandsLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+commandsLabel.BackgroundTransparency = 1.000
+commandsLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+commandsLabel.BorderSizePixel = 0
+commandsLabel.Size = UDim2.new(0, 214, 0, 23)
+commandsLabel.Font = Enum.Font.SourceSans
+commandsLabel.Text = "Commands"
+commandsLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+commandsLabel.TextSize = 14.000
+
+flyLabel.Name = "flyLabel"
+flyLabel.Parent = ScrollingFrame
+flyLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+flyLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+flyLabel.BorderSizePixel = 0
+flyLabel.Position = UDim2.new(0.0327102803, 0, 0.0479552634, 0)
+flyLabel.Size = UDim2.new(0, 200, 0, 25)
+flyLabel.Font = Enum.Font.SourceSans
+flyLabel.Text = "fly [speed]"
+flyLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+flyLabel.TextSize = 14.000
+
+unflyLabel.Name = "unflyLabel"
+unflyLabel.Parent = ScrollingFrame
+unflyLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+unflyLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+unflyLabel.BorderSizePixel = 0
+unflyLabel.Position = UDim2.new(0.0327102803, 0, 0.0783768445, 0)
+unflyLabel.Size = UDim2.new(0, 200, 0, 25)
+unflyLabel.Font = Enum.Font.SourceSans
+unflyLabel.Text = "unfly"
+unflyLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+unflyLabel.TextSize = 14.000
+
+noclipLabel.Name = "noclipLabel"
+noclipLabel.Parent = ScrollingFrame
+noclipLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+noclipLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+noclipLabel.BorderSizePixel = 0
+noclipLabel.Position = UDim2.new(0.0327102803, 0, 0.109091155, 0)
+noclipLabel.Size = UDim2.new(0, 200, 0, 25)
+noclipLabel.Font = Enum.Font.SourceSans
+noclipLabel.Text = "noclip"
+noclipLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+noclipLabel.TextSize = 14.000
+
+unnoclipLabel.Name = "unnoclipLabel"
+unnoclipLabel.Parent = ScrollingFrame
+unnoclipLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+unnoclipLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+unnoclipLabel.BorderSizePixel = 0
+unnoclipLabel.Position = UDim2.new(0.0327102803, 0, 0.14011687, 0)
+unnoclipLabel.Size = UDim2.new(0, 200, 0, 25)
+unnoclipLabel.Font = Enum.Font.SourceSans
+unnoclipLabel.Text = "unnoclip"
+unnoclipLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+unnoclipLabel.TextSize = 14.000
+
+UIListLayout.Parent = ScrollingFrame
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+walkspeedLabel.Name = "walkspeedLabel"
+walkspeedLabel.Parent = ScrollingFrame
+walkspeedLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+walkspeedLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+walkspeedLabel.BorderSizePixel = 0
+walkspeedLabel.Position = UDim2.new(0.0327102803, 0, 0.0479552634, 0)
+walkspeedLabel.Size = UDim2.new(0, 200, 0, 25)
+walkspeedLabel.Font = Enum.Font.SourceSans
+walkspeedLabel.Text = "walkspeed [speed]"
+walkspeedLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+walkspeedLabel.TextSize = 14.000
+
+unwalkspeedLabel.Name = "unwalkspeedLabel"
+unwalkspeedLabel.Parent = ScrollingFrame
+unwalkspeedLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+unwalkspeedLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+unwalkspeedLabel.BorderSizePixel = 0
+unwalkspeedLabel.Position = UDim2.new(0.0327102803, 0, 0.0479552634, 0)
+unwalkspeedLabel.Size = UDim2.new(0, 200, 0, 25)
+unwalkspeedLabel.Font = Enum.Font.SourceSans
+unwalkspeedLabel.Text = "unwalkspeed"
+unwalkspeedLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+unwalkspeedLabel.TextSize = 14.000
+
+jumppowerLabel.Name = "jumppowerLabel"
+jumppowerLabel.Parent = ScrollingFrame
+jumppowerLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+jumppowerLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+jumppowerLabel.BorderSizePixel = 0
+jumppowerLabel.Position = UDim2.new(0.0327102803, 0, 0.0479552634, 0)
+jumppowerLabel.Size = UDim2.new(0, 200, 0, 25)
+jumppowerLabel.Font = Enum.Font.SourceSans
+jumppowerLabel.Text = "jumppower [power]"
+jumppowerLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+jumppowerLabel.TextSize = 14.000
+
+unjumppowerLabel.Name = "unjumppowerLabel"
+unjumppowerLabel.Parent = ScrollingFrame
+unjumppowerLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+unjumppowerLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+unjumppowerLabel.BorderSizePixel = 0
+unjumppowerLabel.Position = UDim2.new(0.0327102803, 0, 0.0479552634, 0)
+unjumppowerLabel.Size = UDim2.new(0, 200, 0, 25)
+unjumppowerLabel.Font = Enum.Font.SourceSans
+unjumppowerLabel.Text = "unjumppower"
+unjumppowerLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+unjumppowerLabel.TextSize = 14.000
+
+teleportToPlayerLabel.Name = "teleportToPlayerLabel"
+teleportToPlayerLabel.Parent = ScrollingFrame
+teleportToPlayerLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+teleportToPlayerLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+teleportToPlayerLabel.BorderSizePixel = 0
+teleportToPlayerLabel.Position = UDim2.new(0.0327102803, 0, 0.0479552634, 0)
+teleportToPlayerLabel.Size = UDim2.new(0, 200, 0, 25)
+teleportToPlayerLabel.Font = Enum.Font.SourceSans
+teleportToPlayerLabel.Text = "teleport [player]"
+teleportToPlayerLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+teleportToPlayerLabel.TextSize = 14.000
+
+clicktpLabel.Name = "clicktpLabel"
+clicktpLabel.Parent = ScrollingFrame
+clicktpLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+clicktpLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+clicktpLabel.BorderSizePixel = 0
+clicktpLabel.Position = UDim2.new(0.0327102803, 0, 0.0479552634, 0)
+clicktpLabel.Size = UDim2.new(0, 200, 0, 25)
+clicktpLabel.Font = Enum.Font.SourceSans
+clicktpLabel.Text = "clicktp"
+clicktpLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+clicktpLabel.TextSize = 14.000
+
+unclicktpLabel.Name = "unclicktpLabel"
+unclicktpLabel.Parent = ScrollingFrame
+unclicktpLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+unclicktpLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+unclicktpLabel.BorderSizePixel = 0
+unclicktpLabel.Position = UDim2.new(0.0327102803, 0, 0.0479552634, 0)
+unclicktpLabel.Size = UDim2.new(0, 200, 0, 25)
+unclicktpLabel.Font = Enum.Font.SourceSans
+unclicktpLabel.Text = "unclicktp"
+unclicktpLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+unclicktpLabel.TextSize = 14.000
+
+commandBox.Name = "commandBox"
+commandBox.Parent = main
+commandBox.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+commandBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+commandBox.BorderSizePixel = 0
+commandBox.Position = UDim2.new(0.429616094, 0, 0.532951295, 0)
+commandBox.Size = UDim2.new(0, 302, 0, 50)
+commandBox.Font = Enum.Font.SourceSans
+commandBox.PlaceholderText = "Enter command / Press ; to open textbox"
+commandBox.Text = ""
+commandBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+commandBox.TextSize = 14.000
+
+-- Scripts:
+
+local function MENBML_fake_script() -- main.dropScript 
+	local script = Instance.new('LocalScript', main)
+
+	local TweenService = game:GetService("TweenService")
+	local frame = script.Parent  -- The Frame
+	local uiElements = frame:GetChildren()
+	
+	-- ✅ Set AnchorPoint so Position is relative to center
+	frame.AnchorPoint = Vector2.new(0.5, 0.5)
+	
+	-- Final position in the middle of the screen
+	local finalPosition = UDim2.new(0.5, 0, 0.5, 0)
+	
+	-- Start position above the screen
+	frame.Position = UDim2.new(0.5, 5, -0.5, 0)
+	
+	-- Tween settings
+	local tweenInfo = TweenInfo.new(
+		0.8, -- Time in seconds
+		Enum.EasingStyle.Quint, -- Smooth easing
+		Enum.EasingDirection.Out
+	)
+	
+	-- Create tween for drop-down
+	local tween = TweenService:Create(frame, tweenInfo, {Position = finalPosition})
+	
+	-- Play the animation
+	tween:Play()
+	
+	-- After the drop-down animation finishes, fade in elements
+	tween.Completed:Connect(function()
+		for _, element in ipairs(uiElements) do
+			if element:IsA("TextLabel") or element:IsA("TextButton") then
+				-- Start invisible
+				element.TextTransparency = 1
+				-- Fade in
+				local fadeTween = TweenService:Create(element, TweenInfo.new(0.5), {TextTransparency = 0})
+				fadeTween:Play()
+			elseif element:IsA("ImageLabel") or element:IsA("ImageButton") then
+				element.ImageTransparency = 1
+				local fadeTween = TweenService:Create(element, TweenInfo.new(0.5), {ImageTransparency = 0})
+				fadeTween:Play()
+			end
+		end
+	end)
+	
+end
+coroutine.wrap(MENBML_fake_script)()
+local function TWMWR_fake_script() -- main.dragScript 
+	local script = Instance.new('LocalScript', main)
+
+	local UIS = game:GetService('UserInputService')
+	local frame = script.Parent
+	local dragToggle = nil
+	local dragSpeed = 0.25
+	local dragStart = nil
+	local startPos = nil
+	
+	local function updateInput(input)
+		local delta = input.Position - dragStart
+		local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+			startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+		game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+	end
+	
+	frame.InputBegan:Connect(function(input)
+		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
+			dragToggle = true
+			dragStart = input.Position
+			startPos = frame.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragToggle = false
+				end
+			end)
+		end
+	end)
+	
+	UIS.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			if dragToggle then
+				updateInput(input)
+			end
+		end
+	end)
+	
+end
+coroutine.wrap(TWMWR_fake_script)()
+local function BXWSIS_fake_script() -- exitButton.exitScript 
+	local script = Instance.new('LocalScript', exitButton)
+
+	local button = script.Parent
+	local main = button.Parent
+	
+	button.MouseButton1Click:Connect(function()
+		main.Visible = false
+	end)
+end
+coroutine.wrap(BXWSIS_fake_script)()
+local function SVKEYNO_fake_script() -- namelabel.nameDisplayer 
+	local script = Instance.new('LocalScript', namelabel)
+
+	local player = game.Players.LocalPlayer
+	
+	script.Parent.Text = player.Name
+end
+coroutine.wrap(SVKEYNO_fake_script)()
+local function TCJR_fake_script() -- commandBox.functionScript 
+	local script = Instance.new('LocalScript', commandBox)
+
+	local player = game.Players.LocalPlayer
+	local commandBox = script.Parent
+	local mainFrame = commandBox.Parent
+	local RunService = game:GetService("RunService")
+	local UserInputService = game:GetService("UserInputService")
+	local Players = game:GetService("Players")
+	local mouse = player:GetMouse()
+	
+	-- Initialize attributes
+	if player:GetAttribute("Flying") == nil then player:SetAttribute("Flying", false) end
+	if player:GetAttribute("Noclip") == nil then player:SetAttribute("Noclip", false) end
+	if player:GetAttribute("CustomWalkSpeed") == nil then player:SetAttribute("CustomWalkSpeed", false) end
+	if player:GetAttribute("CustomJumpPower") == nil then player:SetAttribute("CustomJumpPower", false) end
+	if player:GetAttribute("ClickTP") == nil then player:SetAttribute("ClickTP", false) end
+	
+	-- Flying keys
+	local keys = {W=false, A=false, S=false, D=false, Space=false, LeftShift=false}
+	
+	UserInputService.InputBegan:Connect(function(input, gameProcessed)
+		if gameProcessed then return end
+		if keys[input.KeyCode.Name] ~= nil then keys[input.KeyCode.Name] = true end
+	end)
+	UserInputService.InputEnded:Connect(function(input, gameProcessed)
+		if keys[input.KeyCode.Name] ~= nil then keys[input.KeyCode.Name] = false end
+	end)
+	
+	-- Press ; to focus the command box
+	UserInputService.InputBegan:Connect(function(input, gameProcessed)
+		if gameProcessed then return end
+		if input.KeyCode == Enum.KeyCode.Semicolon then
+			commandBox:CaptureFocus()
+		end
+	end)
+	
+	-- Fly
+	local function startFlying(speed)
+		if player:GetAttribute("Flying") then return end
+		player:SetAttribute("Flying", true)
+		local character = player.Character
+		if not character then return end
+		local hrp = character:WaitForChild("HumanoidRootPart")
+		speed = speed or 50
+	
+		local bodyVelocity = Instance.new("BodyVelocity")
+		bodyVelocity.MaxForce = Vector3.new(1e5,1e5,1e5)
+		bodyVelocity.Velocity = Vector3.new(0,0,0)
+		bodyVelocity.Name = "FlyVelocity"
+		bodyVelocity.Parent = hrp
+	
+		local conn
+		conn = RunService.RenderStepped:Connect(function()
+			if not player:GetAttribute("Flying") or not hrp.Parent then
+				bodyVelocity:Destroy()
+				conn:Disconnect()
+				return
+			end
+			local move = Vector3.new()
+			local cam = workspace.CurrentCamera
+			if keys.W then move = move + cam.CFrame.LookVector end
+			if keys.S then move = move - cam.CFrame.LookVector end
+			if keys.A then move = move - cam.CFrame.RightVector end
+			if keys.D then move = move + cam.CFrame.RightVector end
+			if keys.Space then move = move + Vector3.new(0,1,0) end
+			if keys.LeftShift then move = move - Vector3.new(0,1,0) end
+			bodyVelocity.Velocity = (move.Magnitude>0) and move.Unit*speed or Vector3.new(0,0,0)
+		end)
+	end
+	
+	local function stopFlying()
+		player:SetAttribute("Flying", false)
+		local character = player.Character
+		if not character then return end
+		local hrp = character:FindFirstChild("HumanoidRootPart")
+		if hrp then
+			local bodyVelocity = hrp:FindFirstChild("FlyVelocity")
+			if bodyVelocity then bodyVelocity:Destroy() end
+		end
+	end
+	
+	-- Noclip
+	local noclipConnection
+	local function enableNoclip()
+		if player:GetAttribute("Noclip") then return end
+		player:SetAttribute("Noclip", true)
+		local character = player.Character
+		if not character then return end
+		if noclipConnection then noclipConnection:Disconnect() end
+		noclipConnection = RunService.Stepped:Connect(function()
+			if not player:GetAttribute("Noclip") or not character.Parent then
+				for _, part in ipairs(character:GetDescendants()) do
+					if part:IsA("BasePart") then part.CanCollide = true end
+				end
+				noclipConnection:Disconnect()
+				return
+			end
+			for _, part in ipairs(character:GetDescendants()) do
+				if part:IsA("BasePart") and part.Position.Y>1 then part.CanCollide=false end
+			end
+		end)
+	end
+	
+	local function disableNoclip()
+		if not player:GetAttribute("Noclip") then return end
+		player:SetAttribute("Noclip", false)
+		local character = player.Character
+		if not character then return end
+		for _, part in ipairs(character:GetDescendants()) do
+			if part:IsA("BasePart") then part.CanCollide = true end
+		end
+	end
+	
+	-- WalkSpeed
+	local function setWalkSpeed(speed)
+		local character = player.Character
+		if not character then return end
+		local humanoid = character:FindFirstChildOfClass("Humanoid")
+		if humanoid then
+			humanoid.WalkSpeed = speed
+			player:SetAttribute("CustomWalkSpeed", true)
+		end
+	end
+	
+	local function resetWalkSpeed()
+		local character = player.Character
+		if not character then return end
+		local humanoid = character:FindFirstChildOfClass("Humanoid")
+		if humanoid then
+			humanoid.WalkSpeed = 16
+			player:SetAttribute("CustomWalkSpeed", false)
+		end
+	end
+	
+	-- JumpPower
+	local function setJumpPower(power)
+		local character = player.Character
+		if not character then return end
+		local humanoid = character:FindFirstChildOfClass("Humanoid")
+		if humanoid then
+			humanoid.UseJumpPower = true
+			humanoid.JumpPower = power
+			player:SetAttribute("CustomJumpPower", true)
+		end
+	end
+	
+	local function resetJumpPower()
+		local character = player.Character
+		if not character then return end
+		local humanoid = character:FindFirstChildOfClass("Humanoid")
+		if humanoid then
+			humanoid.UseJumpPower = true
+			humanoid.JumpPower = 50
+			player:SetAttribute("CustomJumpPower", false)
+		end
+	end
+	
+	-- Teleport
+	local function teleportToPlayer(targetName)
+		targetName = targetName:lower()
+		local targetPlayer
+		for _, p in ipairs(Players:GetPlayers()) do
+			if p.Name:lower():find(targetName) then
+				targetPlayer = p
+				break
+			end
+		end
+		if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
+			local character = player.Character
+			if character and character:FindFirstChild("HumanoidRootPart") then
+				character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0,3,0)
+			end
+		end
+	end
+	
+	-- ClickTP
+	local clickTPConnection
+	local function enableClickTP()
+		if player:GetAttribute("ClickTP") then return end
+		player:SetAttribute("ClickTP", true)
+	
+		clickTPConnection = mouse.Button1Down:Connect(function()
+			if not player:GetAttribute("ClickTP") then return end
+			local character = player.Character
+			if character and character:FindFirstChild("HumanoidRootPart") then
+				local mousePos = mouse.Hit.Position
+				character.HumanoidRootPart.CFrame = CFrame.new(mousePos + Vector3.new(0,3,0))
+			end
+		end)
+	end
+	
+	local function disableClickTP()
+		if not player:GetAttribute("ClickTP") then return end
+		player:SetAttribute("ClickTP", false)
+		if clickTPConnection then
+			clickTPConnection:Disconnect()
+			clickTPConnection = nil
+		end
+	end
+	
+	-- Execute command function
+	local function executeCommand(text)
+		text = text:lower():gsub("%s+", " ")
+		local args = {}
+		for word in text:gmatch("%S+") do table.insert(args, word) end
+	
+		local command = args[1]
+		if command=="fly" then
+			local speed = tonumber(args[2]) or 50
+			startFlying(speed)
+		elseif command=="unfly" then stopFlying()
+		elseif command=="noclip" then enableNoclip()
+		elseif command=="unnoclip" then disableNoclip()
+		elseif command=="walkspeed" and args[2] then
+			local speed = tonumber(args[2])
+			if speed then setWalkSpeed(speed) end
+		elseif command=="unwalkspeed" then resetWalkSpeed()
+		elseif command=="jumppower" and args[2] then
+			local power = tonumber(args[2])
+			if power then setJumpPower(power) end
+		elseif command=="unjumppower" then resetJumpPower()
+		elseif command=="teleport" and args[2] then
+			teleportToPlayer(args[2])
+		elseif command=="clicktp" then enableClickTP()
+		elseif command=="unclicktp" then disableClickTP()
+		end
+	end
+	
+	-- Press Enter to execute command
+	commandBox.FocusLost:Connect(function(enterPressed)
+		if enterPressed then
+			executeCommand(commandBox.Text)
+			commandBox.Text = "" -- clear after execution
+		end
+	end)
+	
+end
+coroutine.wrap(TCJR_fake_script)()

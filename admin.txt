@@ -263,7 +263,7 @@ commandBox.TextSize = 14.000
 
 -- Scripts:
 
-local function ZOHVMV_fake_script() -- main.dropScript 
+local function HMIS_fake_script() -- main.dropScript 
 	local script = Instance.new('LocalScript', main)
 
 	local TweenService = game:GetService("TweenService")
@@ -310,8 +310,8 @@ local function ZOHVMV_fake_script() -- main.dropScript
 	end)
 	
 end
-coroutine.wrap(ZOHVMV_fake_script)()
-local function KDSTRZ_fake_script() -- main.dragScript 
+coroutine.wrap(HMIS_fake_script)()
+local function PQNHU_fake_script() -- main.dragScript 
 	local script = Instance.new('LocalScript', main)
 
 	local UIS = game:GetService('UserInputService')
@@ -350,8 +350,8 @@ local function KDSTRZ_fake_script() -- main.dragScript
 	end)
 	
 end
-coroutine.wrap(KDSTRZ_fake_script)()
-local function XWHAUNJ_fake_script() -- exitButton.exitScript 
+coroutine.wrap(PQNHU_fake_script)()
+local function ACRN_fake_script() -- exitButton.exitScript 
 	local script = Instance.new('LocalScript', exitButton)
 
 	local button = script.Parent
@@ -361,16 +361,16 @@ local function XWHAUNJ_fake_script() -- exitButton.exitScript
 		main.Visible = false
 	end)
 end
-coroutine.wrap(XWHAUNJ_fake_script)()
-local function GBYPUJ_fake_script() -- namelabel.nameDisplayer 
+coroutine.wrap(ACRN_fake_script)()
+local function OPFINZ_fake_script() -- namelabel.nameDisplayer 
 	local script = Instance.new('LocalScript', namelabel)
 
 	local player = game.Players.LocalPlayer
 	
 	script.Parent.Text = player.Name
 end
-coroutine.wrap(GBYPUJ_fake_script)()
-local function APGHGD_fake_script() -- commandBox.functionScript 
+coroutine.wrap(OPFINZ_fake_script)()
+local function NYZHUZ_fake_script() -- commandBox.functionScript 
 	local script = Instance.new('LocalScript', commandBox)
 
 	local player = game.Players.LocalPlayer
@@ -399,12 +399,13 @@ local function APGHGD_fake_script() -- commandBox.functionScript
 		if keys[input.KeyCode.Name] ~= nil then keys[input.KeyCode.Name] = false end
 	end)
 	
-	-- Press ; to focus the command box and clear it
+	-- Press ; to focus the command box and clear it after a short delay
 	UserInputService.InputBegan:Connect(function(input, gameProcessed)
 		if gameProcessed then return end
 		if input.KeyCode == Enum.KeyCode.Semicolon then
-			commandBox.Text = ""       -- Clear the box
-			commandBox:CaptureFocus()  -- Focus it
+			commandBox:CaptureFocus()  -- Focus first
+			task.wait(0.03)            -- Tiny delay
+			commandBox.Text = ""        -- Clear the box
 		end
 	end)
 	
@@ -609,4 +610,4 @@ local function APGHGD_fake_script() -- commandBox.functionScript
 	end)
 	
 end
-coroutine.wrap(APGHGD_fake_script)()
+coroutine.wrap(NYZHUZ_fake_script)()

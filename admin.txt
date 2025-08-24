@@ -263,7 +263,7 @@ commandBox.TextSize = 14.000
 
 -- Scripts:
 
-local function HMIS_fake_script() -- main.dropScript 
+local function LYWPKM_fake_script() -- main.dropScript 
 	local script = Instance.new('LocalScript', main)
 
 	local TweenService = game:GetService("TweenService")
@@ -310,8 +310,8 @@ local function HMIS_fake_script() -- main.dropScript
 	end)
 	
 end
-coroutine.wrap(HMIS_fake_script)()
-local function PQNHU_fake_script() -- main.dragScript 
+coroutine.wrap(LYWPKM_fake_script)()
+local function CMIQQ_fake_script() -- main.dragScript 
 	local script = Instance.new('LocalScript', main)
 
 	local UIS = game:GetService('UserInputService')
@@ -350,8 +350,8 @@ local function PQNHU_fake_script() -- main.dragScript
 	end)
 	
 end
-coroutine.wrap(PQNHU_fake_script)()
-local function ACRN_fake_script() -- exitButton.exitScript 
+coroutine.wrap(CMIQQ_fake_script)()
+local function VRGYF_fake_script() -- exitButton.exitScript 
 	local script = Instance.new('LocalScript', exitButton)
 
 	local button = script.Parent
@@ -361,16 +361,16 @@ local function ACRN_fake_script() -- exitButton.exitScript
 		main.Visible = false
 	end)
 end
-coroutine.wrap(ACRN_fake_script)()
-local function OPFINZ_fake_script() -- namelabel.nameDisplayer 
+coroutine.wrap(VRGYF_fake_script)()
+local function RQIQKCA_fake_script() -- namelabel.nameDisplayer 
 	local script = Instance.new('LocalScript', namelabel)
 
 	local player = game.Players.LocalPlayer
 	
 	script.Parent.Text = player.Name
 end
-coroutine.wrap(OPFINZ_fake_script)()
-local function NYZHUZ_fake_script() -- commandBox.functionScript 
+coroutine.wrap(RQIQKCA_fake_script)()
+local function DLWY_fake_script() -- commandBox.functionScript 
 	local script = Instance.new('LocalScript', commandBox)
 
 	local player = game.Players.LocalPlayer
@@ -395,17 +395,23 @@ local function NYZHUZ_fake_script() -- commandBox.functionScript
 		if gameProcessed then return end
 		if keys[input.KeyCode.Name] ~= nil then keys[input.KeyCode.Name] = true end
 	end)
+	
 	UserInputService.InputEnded:Connect(function(input, gameProcessed)
 		if keys[input.KeyCode.Name] ~= nil then keys[input.KeyCode.Name] = false end
 	end)
 	
-	-- Press ; to focus the command box and clear it after a short delay
+	-- Press ; to focus the command box without inserting it
 	UserInputService.InputBegan:Connect(function(input, gameProcessed)
 		if gameProcessed then return end
 		if input.KeyCode == Enum.KeyCode.Semicolon then
-			commandBox:CaptureFocus()  -- Focus first
-			task.wait(0.03)            -- Tiny delay
-			commandBox.Text = ""        -- Clear the box
+			commandBox:CaptureFocus()
+		end
+	end)
+	
+	-- Remove semicolon immediately if it appears
+	commandBox:GetPropertyChangedSignal("Text"):Connect(function()
+		if commandBox.Text:find(";") then
+			commandBox.Text = commandBox.Text:gsub(";", "")
 		end
 	end)
 	
@@ -553,7 +559,6 @@ local function NYZHUZ_fake_script() -- commandBox.functionScript
 	local function enableClickTP()
 		if player:GetAttribute("ClickTP") then return end
 		player:SetAttribute("ClickTP", true)
-	
 		clickTPConnection = mouse.Button1Down:Connect(function()
 			if not player:GetAttribute("ClickTP") then return end
 			local character = player.Character
@@ -610,4 +615,4 @@ local function NYZHUZ_fake_script() -- commandBox.functionScript
 	end)
 	
 end
-coroutine.wrap(NYZHUZ_fake_script)()
+coroutine.wrap(DLWY_fake_script)()

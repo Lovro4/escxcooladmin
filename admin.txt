@@ -26,6 +26,8 @@ local unclicktpLabel = Instance.new("TextLabel")
 local espLabel = Instance.new("TextLabel")
 local unespLabel = Instance.new("TextLabel")
 local healLabel = Instance.new("TextLabel")
+local godmodeLabel = Instance.new("TextLabel")
+local ungodmodeLabel = Instance.new("TextLabel")
 local commandBox = Instance.new("TextBox")
 
 --Properties:
@@ -102,6 +104,7 @@ ScrollingFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 ScrollingFrame.BorderSizePixel = 0
 ScrollingFrame.Position = UDim2.new(0.0164533816, 0, 0.323782235, 0)
 ScrollingFrame.Size = UDim2.new(0, 214, 0, 206)
+ScrollingFrame.CanvasPosition = Vector2.new(0, 280)
 ScrollingFrame.Active = true
 
 commandsLabel.Name = "commandsLabel"
@@ -288,6 +291,30 @@ healLabel.Text = "heal"
 healLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 healLabel.TextSize = 14.000
 
+godmodeLabel.Name = "godmodeLabel"
+godmodeLabel.Parent = ScrollingFrame
+godmodeLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+godmodeLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+godmodeLabel.BorderSizePixel = 0
+godmodeLabel.Position = UDim2.new(0.0327102803, 0, 0.0479552634, 0)
+godmodeLabel.Size = UDim2.new(0, 200, 0, 25)
+godmodeLabel.Font = Enum.Font.SourceSans
+godmodeLabel.Text = "godmode"
+godmodeLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+godmodeLabel.TextSize = 14.000
+
+ungodmodeLabel.Name = "ungodmodeLabel"
+ungodmodeLabel.Parent = ScrollingFrame
+ungodmodeLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+ungodmodeLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ungodmodeLabel.BorderSizePixel = 0
+ungodmodeLabel.Position = UDim2.new(0.0327102803, 0, 0.0479552634, 0)
+ungodmodeLabel.Size = UDim2.new(0, 200, 0, 25)
+ungodmodeLabel.Font = Enum.Font.SourceSans
+ungodmodeLabel.Text = "ungodmode"
+ungodmodeLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+ungodmodeLabel.TextSize = 14.000
+
 commandBox.Name = "commandBox"
 commandBox.Parent = main
 commandBox.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
@@ -303,7 +330,7 @@ commandBox.TextSize = 14.000
 
 -- Scripts:
 
-local function VADVXCE_fake_script() -- main.dropScript 
+local function PAUHA_fake_script() -- main.dropScript 
 	local script = Instance.new('LocalScript', main)
 
 	local TweenService = game:GetService("TweenService")
@@ -350,8 +377,8 @@ local function VADVXCE_fake_script() -- main.dropScript
 	end)
 	
 end
-coroutine.wrap(VADVXCE_fake_script)()
-local function ROQLF_fake_script() -- main.dragScript 
+coroutine.wrap(PAUHA_fake_script)()
+local function WOTNB_fake_script() -- main.dragScript 
 	local script = Instance.new('LocalScript', main)
 
 	local UIS = game:GetService('UserInputService')
@@ -390,8 +417,8 @@ local function ROQLF_fake_script() -- main.dragScript
 	end)
 	
 end
-coroutine.wrap(ROQLF_fake_script)()
-local function PEBCQE_fake_script() -- exitButton.exitScript 
+coroutine.wrap(WOTNB_fake_script)()
+local function CXOZDKU_fake_script() -- exitButton.exitScript 
 	local script = Instance.new('LocalScript', exitButton)
 
 	local button = script.Parent
@@ -401,16 +428,16 @@ local function PEBCQE_fake_script() -- exitButton.exitScript
 		main.Visible = false
 	end)
 end
-coroutine.wrap(PEBCQE_fake_script)()
-local function UJQYTE_fake_script() -- namelabel.nameDisplayer 
+coroutine.wrap(CXOZDKU_fake_script)()
+local function WBRASFQ_fake_script() -- namelabel.nameDisplayer 
 	local script = Instance.new('LocalScript', namelabel)
 
 	local player = game.Players.LocalPlayer
 	
 	script.Parent.Text = player.Name
 end
-coroutine.wrap(UJQYTE_fake_script)()
-local function BZRJ_fake_script() -- commandBox.functionScript 
+coroutine.wrap(WBRASFQ_fake_script)()
+local function HQVVR_fake_script() -- commandBox.functionScript 
 	local script = Instance.new('LocalScript', commandBox)
 
 	local player = game.Players.LocalPlayer
@@ -428,6 +455,7 @@ local function BZRJ_fake_script() -- commandBox.functionScript
 	if player:GetAttribute("CustomJumpPower") == nil then player:SetAttribute("CustomJumpPower", false) end
 	if player:GetAttribute("ClickTP") == nil then player:SetAttribute("ClickTP", false) end
 	if player:GetAttribute("ESP") == nil then player:SetAttribute("ESP", false) end
+	if player:GetAttribute("GodMode") == nil then player:SetAttribute("GodMode", false) end
 	
 	-- Fly controls
 	local keys = {W=false, A=false, S=false, D=false, Space=false, LeftShift=false}
@@ -686,6 +714,48 @@ local function BZRJ_fake_script() -- commandBox.functionScript
 	end
 	
 	-----------------
+	-- GodMode
+	-----------------
+	local godmodeConnection
+	local function enableGodMode()
+		if player:GetAttribute("GodMode") then return end
+		player:SetAttribute("GodMode", true)
+		local character = player.Character
+		if not character then return end
+		local humanoid = character:FindFirstChildOfClass("Humanoid")
+		if not humanoid then return end
+		humanoid.MaxHealth = 1e9
+		humanoid.Health = humanoid.MaxHealth
+	
+		if godmodeConnection then godmodeConnection:Disconnect() end
+		godmodeConnection = RunService.Heartbeat:Connect(function()
+			if not player:GetAttribute("GodMode") or not humanoid.Parent then
+				godmodeConnection:Disconnect()
+				return
+			end
+			humanoid.Health = humanoid.MaxHealth
+		end)
+	end
+	
+	local function disableGodMode()
+		if not player:GetAttribute("GodMode") then return end
+		player:SetAttribute("GodMode", false)
+		local character = player.Character
+		if not character then return end
+		local humanoid = character:FindFirstChildOfClass("Humanoid")
+		if humanoid then
+			humanoid.MaxHealth = 100
+			if humanoid.Health > humanoid.MaxHealth then
+				humanoid.Health = humanoid.MaxHealth
+			end
+		end
+		if godmodeConnection then
+			godmodeConnection:Disconnect()
+			godmodeConnection = nil
+		end
+	end
+	
+	-----------------
 	-- Command Executor
 	-----------------
 	local function executeCommand(text)
@@ -722,6 +792,10 @@ local function BZRJ_fake_script() -- commandBox.functionScript
 					humanoid.Health = humanoid.MaxHealth
 				end
 			end
+		elseif command=="godmode" then
+			enableGodMode()
+		elseif command=="ungodmode" then
+			disableGodMode()
 		end
 	end
 	
@@ -733,4 +807,4 @@ local function BZRJ_fake_script() -- commandBox.functionScript
 	end)
 	
 end
-coroutine.wrap(BZRJ_fake_script)()
+coroutine.wrap(HQVVR_fake_script)()

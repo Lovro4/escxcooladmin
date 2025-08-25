@@ -101,7 +101,6 @@ ScrollingFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 ScrollingFrame.BorderSizePixel = 0
 ScrollingFrame.Position = UDim2.new(0.0164533816, 0, 0.323782235, 0)
 ScrollingFrame.Size = UDim2.new(0, 214, 0, 206)
-ScrollingFrame.CanvasPosition = Vector2.new(0, 280)
 ScrollingFrame.Active = true
 
 commandsLabel.Name = "commandsLabel"
@@ -291,7 +290,7 @@ commandBox.TextSize = 14.000
 
 -- Scripts:
 
-local function VPRGUJG_fake_script() -- main.dropScript 
+local function RELUL_fake_script() -- main.dropScript 
 	local script = Instance.new('LocalScript', main)
 
 	local TweenService = game:GetService("TweenService")
@@ -338,8 +337,8 @@ local function VPRGUJG_fake_script() -- main.dropScript
 	end)
 	
 end
-coroutine.wrap(VPRGUJG_fake_script)()
-local function QLBRKGD_fake_script() -- main.dragScript 
+coroutine.wrap(RELUL_fake_script)()
+local function IHCNTCM_fake_script() -- main.dragScript 
 	local script = Instance.new('LocalScript', main)
 
 	local UIS = game:GetService('UserInputService')
@@ -378,8 +377,8 @@ local function QLBRKGD_fake_script() -- main.dragScript
 	end)
 	
 end
-coroutine.wrap(QLBRKGD_fake_script)()
-local function XBGTG_fake_script() -- exitButton.exitScript 
+coroutine.wrap(IHCNTCM_fake_script)()
+local function EIUAHJ_fake_script() -- exitButton.exitScript 
 	local script = Instance.new('LocalScript', exitButton)
 
 	local button = script.Parent
@@ -389,16 +388,16 @@ local function XBGTG_fake_script() -- exitButton.exitScript
 		main.Visible = false
 	end)
 end
-coroutine.wrap(XBGTG_fake_script)()
-local function TLBQ_fake_script() -- namelabel.nameDisplayer 
+coroutine.wrap(EIUAHJ_fake_script)()
+local function HFWFY_fake_script() -- namelabel.nameDisplayer 
 	local script = Instance.new('LocalScript', namelabel)
 
 	local player = game.Players.LocalPlayer
 	
 	script.Parent.Text = player.Name
 end
-coroutine.wrap(TLBQ_fake_script)()
-local function GDVQ_fake_script() -- commandBox.functionScript 
+coroutine.wrap(HFWFY_fake_script)()
+local function QPPX_fake_script() -- commandBox.functionScript 
 	local script = Instance.new('LocalScript', commandBox)
 
 	local player = game.Players.LocalPlayer
@@ -713,4 +712,4 @@ local function GDVQ_fake_script() -- commandBox.functionScript
 	end)
 	
 end
-coroutine.wrap(GDVQ_fake_script)()
+coroutine.wrap(QPPX_fake_script)()

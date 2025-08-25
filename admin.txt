@@ -23,6 +23,8 @@ local unjumppowerLabel = Instance.new("TextLabel")
 local teleportToPlayerLabel = Instance.new("TextLabel")
 local clicktpLabel = Instance.new("TextLabel")
 local unclicktpLabel = Instance.new("TextLabel")
+local espLabel = Instance.new("TextLabel")
+local unespLabel = Instance.new("TextLabel")
 local commandBox = Instance.new("TextBox")
 
 --Properties:
@@ -99,6 +101,7 @@ ScrollingFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 ScrollingFrame.BorderSizePixel = 0
 ScrollingFrame.Position = UDim2.new(0.0164533816, 0, 0.323782235, 0)
 ScrollingFrame.Size = UDim2.new(0, 214, 0, 206)
+ScrollingFrame.CanvasPosition = Vector2.new(0, 280)
 ScrollingFrame.Active = true
 
 commandsLabel.Name = "commandsLabel"
@@ -107,6 +110,7 @@ commandsLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 commandsLabel.BackgroundTransparency = 1.000
 commandsLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
 commandsLabel.BorderSizePixel = 0
+commandsLabel.Position = UDim2.new(-0.0654205605, 0, 0, 0)
 commandsLabel.Size = UDim2.new(0, 214, 0, 23)
 commandsLabel.Font = Enum.Font.SourceSans
 commandsLabel.Text = "Commands"
@@ -248,6 +252,30 @@ unclicktpLabel.Text = "unclicktp"
 unclicktpLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 unclicktpLabel.TextSize = 14.000
 
+espLabel.Name = "espLabel"
+espLabel.Parent = ScrollingFrame
+espLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+espLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+espLabel.BorderSizePixel = 0
+espLabel.Position = UDim2.new(0.0327102803, 0, 0.0479552634, 0)
+espLabel.Size = UDim2.new(0, 200, 0, 25)
+espLabel.Font = Enum.Font.SourceSans
+espLabel.Text = "esp"
+espLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+espLabel.TextSize = 14.000
+
+unespLabel.Name = "unespLabel"
+unespLabel.Parent = ScrollingFrame
+unespLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+unespLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+unespLabel.BorderSizePixel = 0
+unespLabel.Position = UDim2.new(0.0327102803, 0, 0.0479552634, 0)
+unespLabel.Size = UDim2.new(0, 200, 0, 25)
+unespLabel.Font = Enum.Font.SourceSans
+unespLabel.Text = "unesp"
+unespLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+unespLabel.TextSize = 14.000
+
 commandBox.Name = "commandBox"
 commandBox.Parent = main
 commandBox.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
@@ -263,7 +291,7 @@ commandBox.TextSize = 14.000
 
 -- Scripts:
 
-local function LYWPKM_fake_script() -- main.dropScript 
+local function UTANBO_fake_script() -- main.dropScript 
 	local script = Instance.new('LocalScript', main)
 
 	local TweenService = game:GetService("TweenService")
@@ -310,8 +338,8 @@ local function LYWPKM_fake_script() -- main.dropScript
 	end)
 	
 end
-coroutine.wrap(LYWPKM_fake_script)()
-local function CMIQQ_fake_script() -- main.dragScript 
+coroutine.wrap(UTANBO_fake_script)()
+local function YWIHQR_fake_script() -- main.dragScript 
 	local script = Instance.new('LocalScript', main)
 
 	local UIS = game:GetService('UserInputService')
@@ -350,8 +378,8 @@ local function CMIQQ_fake_script() -- main.dragScript
 	end)
 	
 end
-coroutine.wrap(CMIQQ_fake_script)()
-local function VRGYF_fake_script() -- exitButton.exitScript 
+coroutine.wrap(YWIHQR_fake_script)()
+local function AVQNP_fake_script() -- exitButton.exitScript 
 	local script = Instance.new('LocalScript', exitButton)
 
 	local button = script.Parent
@@ -361,16 +389,16 @@ local function VRGYF_fake_script() -- exitButton.exitScript
 		main.Visible = false
 	end)
 end
-coroutine.wrap(VRGYF_fake_script)()
-local function RQIQKCA_fake_script() -- namelabel.nameDisplayer 
+coroutine.wrap(AVQNP_fake_script)()
+local function RDTE_fake_script() -- namelabel.nameDisplayer 
 	local script = Instance.new('LocalScript', namelabel)
 
 	local player = game.Players.LocalPlayer
 	
 	script.Parent.Text = player.Name
 end
-coroutine.wrap(RQIQKCA_fake_script)()
-local function DLWY_fake_script() -- commandBox.functionScript 
+coroutine.wrap(RDTE_fake_script)()
+local function DVSZ_fake_script() -- commandBox.functionScript 
 	local script = Instance.new('LocalScript', commandBox)
 
 	local player = game.Players.LocalPlayer
@@ -387,20 +415,19 @@ local function DLWY_fake_script() -- commandBox.functionScript
 	if player:GetAttribute("CustomWalkSpeed") == nil then player:SetAttribute("CustomWalkSpeed", false) end
 	if player:GetAttribute("CustomJumpPower") == nil then player:SetAttribute("CustomJumpPower", false) end
 	if player:GetAttribute("ClickTP") == nil then player:SetAttribute("ClickTP", false) end
+	if player:GetAttribute("ESP") == nil then player:SetAttribute("ESP", false) end
 	
-	-- Flying keys
+	-- Fly controls
 	local keys = {W=false, A=false, S=false, D=false, Space=false, LeftShift=false}
-	
 	UserInputService.InputBegan:Connect(function(input, gameProcessed)
 		if gameProcessed then return end
 		if keys[input.KeyCode.Name] ~= nil then keys[input.KeyCode.Name] = true end
 	end)
-	
 	UserInputService.InputEnded:Connect(function(input, gameProcessed)
 		if keys[input.KeyCode.Name] ~= nil then keys[input.KeyCode.Name] = false end
 	end)
 	
-	-- Press ; to focus the command box without inserting it
+	-- Press ; to open command box
 	UserInputService.InputBegan:Connect(function(input, gameProcessed)
 		if gameProcessed then return end
 		if input.KeyCode == Enum.KeyCode.Semicolon then
@@ -408,14 +435,16 @@ local function DLWY_fake_script() -- commandBox.functionScript
 		end
 	end)
 	
-	-- Remove semicolon immediately if it appears
+	-- Remove semicolon if typed
 	commandBox:GetPropertyChangedSignal("Text"):Connect(function()
 		if commandBox.Text:find(";") then
 			commandBox.Text = commandBox.Text:gsub(";", "")
 		end
 	end)
 	
-	-- Fly
+	-----------------
+	-- Flying
+	-----------------
 	local function startFlying(speed)
 		if player:GetAttribute("Flying") then return end
 		player:SetAttribute("Flying", true)
@@ -460,7 +489,9 @@ local function DLWY_fake_script() -- commandBox.functionScript
 		end
 	end
 	
+	-----------------
 	-- Noclip
+	-----------------
 	local noclipConnection
 	local function enableNoclip()
 		if player:GetAttribute("Noclip") then return end
@@ -492,7 +523,9 @@ local function DLWY_fake_script() -- commandBox.functionScript
 		end
 	end
 	
+	-----------------
 	-- WalkSpeed
+	-----------------
 	local function setWalkSpeed(speed)
 		local character = player.Character
 		if not character then return end
@@ -502,7 +535,6 @@ local function DLWY_fake_script() -- commandBox.functionScript
 			player:SetAttribute("CustomWalkSpeed", true)
 		end
 	end
-	
 	local function resetWalkSpeed()
 		local character = player.Character
 		if not character then return end
@@ -513,7 +545,9 @@ local function DLWY_fake_script() -- commandBox.functionScript
 		end
 	end
 	
+	-----------------
 	-- JumpPower
+	-----------------
 	local function setJumpPower(power)
 		local character = player.Character
 		if not character then return end
@@ -524,7 +558,6 @@ local function DLWY_fake_script() -- commandBox.functionScript
 			player:SetAttribute("CustomJumpPower", true)
 		end
 	end
-	
 	local function resetJumpPower()
 		local character = player.Character
 		if not character then return end
@@ -536,7 +569,9 @@ local function DLWY_fake_script() -- commandBox.functionScript
 		end
 	end
 	
+	-----------------
 	-- Teleport
+	-----------------
 	local function teleportToPlayer(targetName)
 		targetName = targetName:lower()
 		local targetPlayer
@@ -554,7 +589,9 @@ local function DLWY_fake_script() -- commandBox.functionScript
 		end
 	end
 	
+	-----------------
 	-- ClickTP
+	-----------------
 	local clickTPConnection
 	local function enableClickTP()
 		if player:GetAttribute("ClickTP") then return end
@@ -568,7 +605,6 @@ local function DLWY_fake_script() -- commandBox.functionScript
 			end
 		end)
 	end
-	
 	local function disableClickTP()
 		if not player:GetAttribute("ClickTP") then return end
 		player:SetAttribute("ClickTP", false)
@@ -578,7 +614,68 @@ local function DLWY_fake_script() -- commandBox.functionScript
 		end
 	end
 	
-	-- Execute command function
+	-----------------
+	-- ESP
+	-----------------
+	local espConnections = {}
+	local function enableESP()
+		if player:GetAttribute("ESP") then return end
+		player:SetAttribute("ESP", true)
+	
+		local function addESPToCharacter(character)
+			if not player:GetAttribute("ESP") then return end
+			local highlight = Instance.new("Highlight")
+			highlight.FillColor = Color3.fromRGB(255,0,0)
+			highlight.OutlineColor = Color3.fromRGB(255,0,0)
+			highlight.FillTransparency = 0.5
+			highlight.OutlineTransparency = 0
+			highlight.Adornee = character
+			highlight.Parent = character
+		end
+	
+		local function addPlayerESP(plr)
+			if plr ~= player then
+				if plr.Character then
+					addESPToCharacter(plr.Character)
+				end
+				local conn = plr.CharacterAdded:Connect(function(char)
+					RunService.Heartbeat:Wait()
+					addESPToCharacter(char)
+				end)
+				table.insert(espConnections, conn)
+			end
+		end
+	
+		for _, plr in ipairs(Players:GetPlayers()) do
+			addPlayerESP(plr)
+		end
+		local newConn = Players.PlayerAdded:Connect(addPlayerESP)
+		table.insert(espConnections, newConn)
+	end
+	
+	local function disableESP()
+		if not player:GetAttribute("ESP") then return end
+		player:SetAttribute("ESP", false)
+	
+		-- Remove all highlights
+		for _, plr in ipairs(Players:GetPlayers()) do
+			if plr ~= player and plr.Character then
+				for _, obj in ipairs(plr.Character:GetChildren()) do
+					if obj:IsA("Highlight") then obj:Destroy() end
+				end
+			end
+		end
+	
+		-- Disconnect listeners
+		for _, conn in ipairs(espConnections) do
+			conn:Disconnect()
+		end
+		espConnections = {}
+	end
+	
+	-----------------
+	-- Command Executor
+	-----------------
 	local function executeCommand(text)
 		text = text:lower():gsub("%s+", " ")
 		local args = {}
@@ -603,10 +700,11 @@ local function DLWY_fake_script() -- commandBox.functionScript
 			teleportToPlayer(args[2])
 		elseif command=="clicktp" then enableClickTP()
 		elseif command=="unclicktp" then disableClickTP()
+		elseif command=="esp" then enableESP()
+		elseif command=="unesp" then disableESP()
 		end
 	end
 	
-	-- Press Enter to execute command
 	commandBox.FocusLost:Connect(function(enterPressed)
 		if enterPressed then
 			executeCommand(commandBox.Text)
@@ -615,4 +713,4 @@ local function DLWY_fake_script() -- commandBox.functionScript
 	end)
 	
 end
-coroutine.wrap(DLWY_fake_script)()
+coroutine.wrap(DVSZ_fake_script)()

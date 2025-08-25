@@ -291,7 +291,7 @@ commandBox.TextSize = 14.000
 
 -- Scripts:
 
-local function UTANBO_fake_script() -- main.dropScript 
+local function VPRGUJG_fake_script() -- main.dropScript 
 	local script = Instance.new('LocalScript', main)
 
 	local TweenService = game:GetService("TweenService")
@@ -338,8 +338,8 @@ local function UTANBO_fake_script() -- main.dropScript
 	end)
 	
 end
-coroutine.wrap(UTANBO_fake_script)()
-local function YWIHQR_fake_script() -- main.dragScript 
+coroutine.wrap(VPRGUJG_fake_script)()
+local function QLBRKGD_fake_script() -- main.dragScript 
 	local script = Instance.new('LocalScript', main)
 
 	local UIS = game:GetService('UserInputService')
@@ -378,8 +378,8 @@ local function YWIHQR_fake_script() -- main.dragScript
 	end)
 	
 end
-coroutine.wrap(YWIHQR_fake_script)()
-local function AVQNP_fake_script() -- exitButton.exitScript 
+coroutine.wrap(QLBRKGD_fake_script)()
+local function XBGTG_fake_script() -- exitButton.exitScript 
 	local script = Instance.new('LocalScript', exitButton)
 
 	local button = script.Parent
@@ -389,16 +389,16 @@ local function AVQNP_fake_script() -- exitButton.exitScript
 		main.Visible = false
 	end)
 end
-coroutine.wrap(AVQNP_fake_script)()
-local function RDTE_fake_script() -- namelabel.nameDisplayer 
+coroutine.wrap(XBGTG_fake_script)()
+local function TLBQ_fake_script() -- namelabel.nameDisplayer 
 	local script = Instance.new('LocalScript', namelabel)
 
 	local player = game.Players.LocalPlayer
 	
 	script.Parent.Text = player.Name
 end
-coroutine.wrap(RDTE_fake_script)()
-local function DVSZ_fake_script() -- commandBox.functionScript 
+coroutine.wrap(TLBQ_fake_script)()
+local function GDVQ_fake_script() -- commandBox.functionScript 
 	local script = Instance.new('LocalScript', commandBox)
 
 	local player = game.Players.LocalPlayer
@@ -713,4 +713,4 @@ local function DVSZ_fake_script() -- commandBox.functionScript
 	end)
 	
 end
-coroutine.wrap(DVSZ_fake_script)()
+coroutine.wrap(GDVQ_fake_script)()

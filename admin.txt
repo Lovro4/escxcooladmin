@@ -25,6 +25,7 @@ local clicktpLabel = Instance.new("TextLabel")
 local unclicktpLabel = Instance.new("TextLabel")
 local espLabel = Instance.new("TextLabel")
 local unespLabel = Instance.new("TextLabel")
+local healLabel = Instance.new("TextLabel")
 local commandBox = Instance.new("TextBox")
 
 --Properties:
@@ -275,6 +276,18 @@ unespLabel.Text = "unesp"
 unespLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 unespLabel.TextSize = 14.000
 
+healLabel.Name = "healLabel"
+healLabel.Parent = ScrollingFrame
+healLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+healLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+healLabel.BorderSizePixel = 0
+healLabel.Position = UDim2.new(0.0327102803, 0, 0.0479552634, 0)
+healLabel.Size = UDim2.new(0, 200, 0, 25)
+healLabel.Font = Enum.Font.SourceSans
+healLabel.Text = "heal"
+healLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+healLabel.TextSize = 14.000
+
 commandBox.Name = "commandBox"
 commandBox.Parent = main
 commandBox.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
@@ -290,7 +303,7 @@ commandBox.TextSize = 14.000
 
 -- Scripts:
 
-local function RELUL_fake_script() -- main.dropScript 
+local function VADVXCE_fake_script() -- main.dropScript 
 	local script = Instance.new('LocalScript', main)
 
 	local TweenService = game:GetService("TweenService")
@@ -337,8 +350,8 @@ local function RELUL_fake_script() -- main.dropScript
 	end)
 	
 end
-coroutine.wrap(RELUL_fake_script)()
-local function IHCNTCM_fake_script() -- main.dragScript 
+coroutine.wrap(VADVXCE_fake_script)()
+local function ROQLF_fake_script() -- main.dragScript 
 	local script = Instance.new('LocalScript', main)
 
 	local UIS = game:GetService('UserInputService')
@@ -377,8 +390,8 @@ local function IHCNTCM_fake_script() -- main.dragScript
 	end)
 	
 end
-coroutine.wrap(IHCNTCM_fake_script)()
-local function EIUAHJ_fake_script() -- exitButton.exitScript 
+coroutine.wrap(ROQLF_fake_script)()
+local function PEBCQE_fake_script() -- exitButton.exitScript 
 	local script = Instance.new('LocalScript', exitButton)
 
 	local button = script.Parent
@@ -388,16 +401,16 @@ local function EIUAHJ_fake_script() -- exitButton.exitScript
 		main.Visible = false
 	end)
 end
-coroutine.wrap(EIUAHJ_fake_script)()
-local function HFWFY_fake_script() -- namelabel.nameDisplayer 
+coroutine.wrap(PEBCQE_fake_script)()
+local function UJQYTE_fake_script() -- namelabel.nameDisplayer 
 	local script = Instance.new('LocalScript', namelabel)
 
 	local player = game.Players.LocalPlayer
 	
 	script.Parent.Text = player.Name
 end
-coroutine.wrap(HFWFY_fake_script)()
-local function QPPX_fake_script() -- commandBox.functionScript 
+coroutine.wrap(UJQYTE_fake_script)()
+local function BZRJ_fake_script() -- commandBox.functionScript 
 	local script = Instance.new('LocalScript', commandBox)
 
 	local player = game.Players.LocalPlayer
@@ -701,6 +714,14 @@ local function QPPX_fake_script() -- commandBox.functionScript
 		elseif command=="unclicktp" then disableClickTP()
 		elseif command=="esp" then enableESP()
 		elseif command=="unesp" then disableESP()
+		elseif command=="heal" then
+			local character = player.Character
+			if character then
+				local humanoid = character:FindFirstChildOfClass("Humanoid")
+				if humanoid then
+					humanoid.Health = humanoid.MaxHealth
+				end
+			end
 		end
 	end
 	
@@ -712,4 +733,4 @@ local function QPPX_fake_script() -- commandBox.functionScript
 	end)
 	
 end
-coroutine.wrap(QPPX_fake_script)()
+coroutine.wrap(BZRJ_fake_script)()
